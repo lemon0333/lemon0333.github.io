@@ -2,8 +2,7 @@ backend:
   name: github
   repo: lemon0333/lemon0333.github.io
   branch: master
-  # 아래 base_url 은 GitHub OAuth 프록시 주소로 교체하세요 (설정 후 주석 해제)
-  # base_url: https://YOUR-OAUTH-PROXY.workers.dev
+  base_url: https://decap-oauth.harryhyunbin.workers.dev
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
