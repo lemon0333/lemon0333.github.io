@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { blogCategories, profile } from "../../data/site";
+import { blogCategories, blogPosts, profile } from "../../data/site";
 
 export const metadata = { title: "Blog · 손현빈" };
 
@@ -17,10 +17,16 @@ const CSS = `
   .sub .wrap{ max-width:760px; margin:0 auto; padding:44px 24px 90px; }
   .sub .lead{ font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); font-weight:700; font-family:ui-monospace,Menlo,monospace; }
   .sub h1{ font-size:clamp(26px,4.5vw,36px); font-weight:800; letter-spacing:-.02em; margin:10px 0 28px; }
-  .sub .cat{ scroll-margin-top:80px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin-bottom:14px; box-shadow:0 6px 22px rgba(15,44,66,.05); display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .sub .cat{ scroll-margin-top:80px; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin-bottom:14px; box-shadow:0 6px 22px rgba(15,44,66,.05); }
+  .sub .cat-head{ display:flex; align-items:center; justify-content:space-between; gap:16px; }
   .sub .cat h2{ font-size:18px; font-weight:800; margin:0 0 4px; text-transform:lowercase; }
-  .sub .cat p{ margin:0; color:var(--muted); font-size:14px; }
+  .sub .cat-head p{ margin:0; color:var(--muted); font-size:14px; }
   .sub .soon{ font-family:ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); border:1px solid var(--line); border-radius:999px; padding:5px 12px; white-space:nowrap; }
+  .sub .posts{ list-style:none; margin:14px 0 0; padding:14px 0 0; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:12px; }
+  .sub .posts li{ display:flex; flex-direction:column; gap:3px; }
+  .sub .posts .pd{ font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--muted); }
+  .sub .posts .pt{ font-size:15.5px; font-weight:700; color:var(--ink); }
+  .sub .posts .ps{ font-size:13.5px; color:var(--soft); }
 `;
 
 export default function Blog() {
@@ -38,15 +44,33 @@ export default function Blog() {
       <div className="wrap">
         <div className="lead">Blog</div>
         <h1>기록</h1>
-        {blogCategories.map((c) => (
-          <section className="cat" id={c.id} key={c.id}>
-            <div>
-              <h2>{c.label}</h2>
-              <p>{c.desc}</p>
-            </div>
-            <span className="soon">준비 중</span>
-          </section>
-        ))}
+        {blogCategories.map((c) => {
+          const posts = blogPosts
+            .filter((p) => p.category === c.id)
+            .sort((a, b) => (a.date < b.date ? 1 : -1));
+          return (
+            <section className="cat" id={c.id} key={c.id}>
+              <div className="cat-head">
+                <div>
+                  <h2>{c.label}</h2>
+                  <p>{c.desc}</p>
+                </div>
+                {posts.length === 0 && <span className="soon">준비 중</span>}
+              </div>
+              {posts.length > 0 && (
+                <ul className="posts">
+                  {posts.map((p, i) => (
+                    <li key={i}>
+                      <span className="pd">{p.date}</span>
+                      <span className="pt">{p.title}</span>
+                      <span className="ps">{p.summary}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          );
+        })}
       </div>
     </div>
   );

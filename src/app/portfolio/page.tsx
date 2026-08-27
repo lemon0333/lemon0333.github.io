@@ -31,6 +31,8 @@ const CSS = `
   .sub .res{ grid-column:2; grid-row:1 / span 2; align-self:stretch; display:flex; flex-direction:column; justify-content:center; align-items:flex-end; text-align:right; min-width:110px; padding-left:20px; border-left:1px solid var(--line); }
   .sub .res .big{ font-size:26px; font-weight:800; letter-spacing:-.02em; color:var(--accent); line-height:1; }
   .sub .res .rs{ font-size:11px; color:var(--muted); margin-top:7px; font-family:ui-monospace,Menlo,monospace; }
+  .sub .slides{ grid-column:1 / -1; display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:10px; margin-top:16px; }
+  .sub .slides img{ width:100%; border-radius:10px; border:1px solid var(--line); display:block; }
   @media (max-width:600px){ .sub .card{ grid-template-columns:1fr; } .sub .res{ grid-column:1; grid-row:auto; border-left:0; padding-left:0; align-items:flex-start; text-align:left; margin-top:14px; padding-top:14px; border-top:1px solid var(--line); flex-direction:row; gap:12px; align-items:baseline; } .sub .res .rs{ margin-top:0; } }
 `;
 
@@ -69,6 +71,14 @@ export default function Portfolio() {
               <div className="stacks">
                 {p.stack.map((s) => <span className="chip" key={s}>{s}</span>)}
               </div>
+              {p.slides && p.slides.length > 0 && (
+                <div className="slides">
+                  {p.slides.map((src, i) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img key={i} src={src} alt={`${p.title} slide ${i + 1}`} />
+                  ))}
+                </div>
+              )}
             </article>
           ))}
         </div>

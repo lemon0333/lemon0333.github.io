@@ -1,0 +1,16 @@
+{
+  "headline": "AI를 안정적인 서비스로 구현하는 백엔드·클라우드 개발자",
+  "paragraphs": [
+    "성능 문제는 증상이 아니라 병목의 근본 원인에서 진단하고, AI에게는 판단을 맡기되 실행은 시스템이 통제하도록 경계를 설계합니다.",
+    "잘 되는 경우가 아니라 실패했을 때 무엇이 남는지까지 책임지는 개발을 지향합니다."
+  ],
+  "skills": [
+    { "group": "Language", "items": ["Python", "Java", "TypeScript", "SQL"] },
+    { "group": "Backend · AI", "items": ["FastAPI", "Spring", "Claude API", "MCP", "ReAct", "PGVector"] },
+    { "group": "Cloud · Infra", "items": ["AWS (EC2·RDS·SSM)", "Terraform", "Docker", "PostgreSQL", "Git"] }
+  ],
+  "certs": ["AWS SAA", "AWS AI Practitioner", "SQLD", "TOPCIT Lv.3"],
+  "awards": ["AI NoCode MCP 해커톤 시즌2 · 대상 (2025.11)", "UMC 7기 데모데이 · 우수상 (2025.02)"],
+  "activities": ["AWS Cloud Club (ACC) 4기 회장", "OSSCA · Yorkie 멘티", "GDGoC Core Member", "UMC 7기 Backend"],
+  "education": ["경희대학교 컴퓨터공학과 · 응용수학과 (2022–2026)", "Software Engineer Intern · 에픽카 (2026.03–06)"]
+}

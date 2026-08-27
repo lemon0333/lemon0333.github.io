@@ -50,10 +50,10 @@ export default function About() {
 
         <div className="panel">
           <h2>Skills</h2>
-          {Object.entries(about.skills).map(([g, items]) => (
-            <div className="grp" key={g}>
-              <span className="gl">{g}</span>
-              <div className="tags">{items.map((s) => <span className="chip" key={s}>{s}</span>)}</div>
+          {about.skills.map((sg) => (
+            <div className="grp" key={sg.group}>
+              <span className="gl">{sg.group}</span>
+              <div className="tags">{sg.items.map((s) => <span className="chip" key={s}>{s}</span>)}</div>
             </div>
           ))}
         </div>

@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "title": "바다·레몬 개인 사이트를 만들며",
+      "category": "dev",
+      "date": "2026-08-28",
+      "summary": "Next.js 정적 사이트 + GitHub Pages + Decap CMS로 콘텐츠를 코드에서 분리한 과정.",
+      "body": "첫 글입니다. 앞으로 개발 기록을 남깁니다."
+    }
+  ]
+}

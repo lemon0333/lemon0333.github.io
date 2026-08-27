@@ -1,0 +1,96 @@
+backend:
+  name: github
+  repo: lemon0333/lemon0333.github.io
+  branch: master
+  # 아래 base_url 은 GitHub OAuth 프록시 주소로 교체하세요 (설정 후 주석 해제)
+  # base_url: https://YOUR-OAUTH-PROXY.workers.dev
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+locale: "ko"
+
+collections:
+  - name: profile
+    label: 프로필
+    files:
+      - name: profile
+        label: 프로필
+        file: content/profile.json
+        fields:
+          - { name: name, label: 이름(영문), widget: string }
+          - { name: kr, label: 이름(한글), widget: string }
+          - { name: tagline, label: 태그라인, widget: string }
+          - { name: email, label: 이메일, widget: string }
+          - { name: github, label: GitHub URL, widget: string }
+          - { name: linkedin, label: LinkedIn URL, widget: string }
+
+  - name: about
+    label: About
+    files:
+      - name: about
+        label: About
+        file: content/about.json
+        fields:
+          - { name: headline, label: 헤드라인, widget: string }
+          - name: paragraphs
+            label: 소개 문단
+            widget: list
+            field: { name: text, label: 문단, widget: text }
+          - name: skills
+            label: 스킬
+            widget: list
+            fields:
+              - { name: group, label: 분류, widget: string }
+              - { name: items, label: 항목, widget: list }
+          - { name: certs, label: 자격증, widget: list }
+          - { name: awards, label: 수상, widget: list }
+          - { name: activities, label: 활동, widget: list }
+          - { name: education, label: 학력, widget: list }
+
+  - name: projects
+    label: 프로젝트
+    files:
+      - name: projects
+        label: 프로젝트 목록
+        file: content/projects.json
+        fields:
+          - name: items
+            label: 프로젝트
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: 제목, widget: string }
+              - { name: tag, label: 태그(예: AI · Backend), widget: string }
+              - { name: result, label: 성과(강조), widget: string }
+              - { name: resultSub, label: 성과 부가설명, widget: string }
+              - { name: problem, label: 문제, widget: text }
+              - { name: approach, label: 접근, widget: text }
+              - { name: outcome, label: 결과, widget: text }
+              - { name: stack, label: 기술 스택, widget: list }
+              - name: slides
+                label: 슬라이드 (PPT 이미지, 여러 장)
+                widget: list
+                required: false
+                field: { name: image, label: 이미지, widget: image }
+
+  - name: blog
+    label: 블로그
+    files:
+      - name: blog
+        label: 블로그 글
+        file: content/blog.json
+        fields:
+          - name: items
+            label: 글
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: 제목, widget: string }
+              - name: category
+                label: 카테고리
+                widget: select
+                options: [dev, cs, java, cloud, do]
+              - { name: date, label: 날짜 (YYYY-MM-DD), widget: string }
+              - { name: summary, label: 요약, widget: text }
+              - { name: body, label: 본문, widget: text }
